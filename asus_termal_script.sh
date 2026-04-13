@@ -1,11 +1,17 @@
 #!/bin/bash
 
-while [[ "$answer" != "3" ]] do
-read -p "Which mode to toggle?
+while [[ "$answer" != "7" ]] do
+read -p "
+
+Which mode to toggle?
 2 - Silent
 0 - Balanced
 1 - Perfomance
-3 - Exit
+3 - Integrated Mode
+4 - Hybrid Mode
+5 - MUX Mode
+6 - Check Mode
+7 - Exit
 : " answer
 
     if [[ "$answer" == "2" ]]; then
@@ -20,6 +26,18 @@ read -p "Which mode to toggle?
         # Performance
         echo 1 | sudo tee /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
         echo You successfully toggled Performance mode
+    elif [[ "$answer" == "3" ]]; then
+        # Integrated Mode
+        supergfxctl -m Integrated
+    elif [[ "$answer" == "4" ]]; then
+        # Hybrid Mode
+        supergfxctl -m Hybrid
+    elif [[ "$answer" == "5" ]] then
+        # MUX
+        supergfxctl -m AsusMuxDgpu
+    elif [[ "$answer" == "6" ]]; then
+        # Check Mode
+        supergfxctl -g
     else
         echo "Exit"
     fi
