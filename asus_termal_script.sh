@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while [[ "$answer" != "7" ]] do
+while [[ "$answer" != "7" ]]; do
 read -p "
 
 Which mode to toggle?
@@ -12,7 +12,7 @@ Which mode to toggle?
 5 - MUX Mode
 6 - Check Mode
 7 - Exit
-: " answer
+: " answer || break
 
     if [[ "$answer" == "2" ]]; then
         # Silent
@@ -32,7 +32,7 @@ Which mode to toggle?
     elif [[ "$answer" == "4" ]]; then
         # Hybrid Mode
         supergfxctl -m Hybrid
-    elif [[ "$answer" == "5" ]] then
+    elif [[ "$answer" == "5" ]]; then
         # MUX
         supergfxctl -m AsusMuxDgpu
     elif [[ "$answer" == "6" ]]; then
