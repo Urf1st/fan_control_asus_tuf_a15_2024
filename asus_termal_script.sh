@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while [[ "$answer" != "7" ]]; do
+while [[ "$answer" != "9" ]]; do
 read -p "
 
 Which mode to toggle?
@@ -11,7 +11,9 @@ Which mode to toggle?
 4 - Hybrid Mode
 5 - MUX Mode
 6 - Check Mode
-7 - Exit
+7 - Reboot
+8 - Shutdown
+9 - Exit
 : " answer || break
 
     if [[ "$answer" == "2" ]]; then
@@ -38,6 +40,12 @@ Which mode to toggle?
     elif [[ "$answer" == "6" ]]; then
         # Check Mode
         supergfxctl -g
+    elif [[ "$answer" == "7" ]]; then
+        # Reboot
+        reboot
+    elif [[ "$answer" == "8" ]]; then
+        # Shutdown
+        systemctl poweroff
     else
         echo "Exit"
     fi
